@@ -1,11 +1,17 @@
 import re
 import urllib.request
 
-htmlfile = urllib.request.urlopen("http://finance.yahoo.com/q?s=GOOG")
+symbol = input("Please enter stock symbol :  ")
+
+htmlfile = urllib.request.urlopen('http://finance.yahoo.com/q?s='+symbol+'&ql=0')
 
 htmltext = htmlfile.read().decode()
 
-regex = '<span id="yfs_l84_goog">(.+?)</span>'
+
+
+#regex = '<span id="yfs_l84_indosolar.ns">(.+?)</span>'
+
+regex = '<span id="yfs_l84_'+symbol+'">(.+?)</span>'
 
 pattern = re.compile(regex)
 

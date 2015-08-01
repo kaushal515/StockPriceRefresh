@@ -2,17 +2,19 @@ import re
 import urllib.request
 import time
 
+symbol = input("Please enter stock symbol :  ")
+
 def get_stock_price():
  i = 0  
  while i < 3 :
 
   i = i+1
    
-  htmlfile = urllib.request.urlopen("http://finance.yahoo.com/q?s=GOOG")
+  htmlfile = urllib.request.urlopen('http://finance.yahoo.com/q?s='+symbol+'&ql=0')
 
   htmltext = htmlfile.read().decode()
 
-  regex = '<span id="yfs_l84_goog">(.+?)</span>'
+  regex = '<span id="yfs_l84_'+symbol+'">(.+?)</span>'
 
   pattern = re.compile(regex)
 
@@ -23,3 +25,4 @@ def get_stock_price():
   time.sleep(30)
 
   
+get_stock_price()
