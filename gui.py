@@ -1,3 +1,6 @@
+#Author : Kaushal
+#Created on : Sun 2 August 2015
+
 from tkinter import *
 from tkinter.ttk import *
 import re

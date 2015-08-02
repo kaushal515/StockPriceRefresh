@@ -4,17 +4,21 @@ import re
 import urllib.request
 import time
 
-def get_stock_price():
+def get_stock_price(*args):
+
+ symbol_in = str(symbol.get())
+
+ print(symbol_in)
  i = 0  
  while i < 3 :
 
   i = i+1
    
-  htmlfile = urllib.request.urlopen("http://finance.yahoo.com/q?s=indosolar.ns&ql=0")
+  htmlfile = urllib.request.urlopen('http://finance.yahoo.com/q?s='+symbol_in+'&ql=0')
 
   htmltext = htmlfile.read().decode()
 
-  regex = '<span id="yfs_l84_indosolar.ns">(.+?)</span>'
+  regex = '<span id="yfs_l84_'+symbol_in+'">(.+?)</span>'
 
   pattern = re.compile(regex)
 
